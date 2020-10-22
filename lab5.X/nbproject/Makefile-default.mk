@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c devide.asm
+SOURCEFILES_QUOTED_IF_SPACED=main.c divide.asm
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/devide.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/devide.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/divide.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/divide.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/devide.o
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/divide.o
 
 # Source Files
-SOURCEFILES=main.c devide.asm
+SOURCEFILES=main.c divide.asm
 
 
 
@@ -116,22 +116,22 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/devide.o: devide.asm  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/divide.o: divide.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/devide.o.d 
-	@${RM} ${OBJECTDIR}/devide.o 
-	${MP_CC} -c $(MP_EXTRA_AS_PRE) -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto   -o ${OBJECTDIR}/devide.o  devide.asm 
-	@-${MV} ${OBJECTDIR}/devide.d ${OBJECTDIR}/devide.o.d 
-	@${FIXDEPS} ${OBJECTDIR}/devide.o.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	@${RM} ${OBJECTDIR}/divide.o.d 
+	@${RM} ${OBJECTDIR}/divide.o 
+	${MP_CC} -c $(MP_EXTRA_AS_PRE) -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto   -o ${OBJECTDIR}/divide.o  divide.asm 
+	@-${MV} ${OBJECTDIR}/divide.d ${OBJECTDIR}/divide.o.d 
+	@${FIXDEPS} ${OBJECTDIR}/divide.o.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
-${OBJECTDIR}/devide.o: devide.asm  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/divide.o: divide.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/devide.o.d 
-	@${RM} ${OBJECTDIR}/devide.o 
-	${MP_CC} -c $(MP_EXTRA_AS_PRE) -mcpu=$(MP_PROCESSOR_OPTION)  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto   -o ${OBJECTDIR}/devide.o  devide.asm 
-	@-${MV} ${OBJECTDIR}/devide.d ${OBJECTDIR}/devide.o.d 
-	@${FIXDEPS} ${OBJECTDIR}/devide.o.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	@${RM} ${OBJECTDIR}/divide.o.d 
+	@${RM} ${OBJECTDIR}/divide.o 
+	${MP_CC} -c $(MP_EXTRA_AS_PRE) -mcpu=$(MP_PROCESSOR_OPTION)  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto   -o ${OBJECTDIR}/divide.o  divide.asm 
+	@-${MV} ${OBJECTDIR}/divide.d ${OBJECTDIR}/divide.o.d 
+	@${FIXDEPS} ${OBJECTDIR}/divide.o.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

@@ -62,17 +62,9 @@ unsigned int result, counter;
 
 void __interrupt(high_priority) ISR(void)
 {
-    if (PIR1bits.ADIF) {
-        PIR1bits.ADIF = 0;
-        counter++;
-        if (counter) {
-            result = ADRES;
-            LATD = result >> 6;
-            counter = 0;
-        }
-    } else if (PIR2bits.CCP2IF) {
-        PIR2bits.CCP2IF = 0;
-    }
+    PIR1bits.ADIF = 0;
+    LATD = ADRES >> 6;
+    ADCON0bits.GODONE = 1;   
     
     return;
 }
@@ -107,22 +99,7 @@ void main(void) {
     TRISD = 0; // setup RD0-RD4 to outputs
     LATD = 0; // turn off all LEDs at the beginning
     
-    /* Enable CCP2 Interrupt  */ 
-    PIE2bits.CCP2IE = 1;
-    IPR2bits.CCP2IP =1;
-    CCP2CONbits.CCP2M = 0b1011;
-    //set comparator value, 1 sec = 4M / 4 / 8 = 125000, interrupt when TIMER3==CCPR2
-    //so set CCPR2 = 25000, when it counts 125000 / 25000 = 5 times, it equals to 1 sec
-    //1 sec passed we can acquire the ADRES value to result
-    CCPR2 = 25000;
-
-    /* Timer 3 configuration */
-    
-    //bit6, 3: Timer3 is the capture/compare clock source for CCP2;
-    //bit 5 ~ 4:  1:8 Prescale value
-    //bit1: Internal clock (FOSC/4)
-    //bit0: //Set Timer3 On
-    T3CON = 0b00111001;
+    ADCON0bits.GODONE = 1;
     
     while (1) {
         /* waiting */
